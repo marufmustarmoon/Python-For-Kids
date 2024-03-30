@@ -1,0 +1,28 @@
+.card1 {
+  max-width: 1000px;
+  min-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(238, 234, 234, 0.1);
+  text-align: center;
+  background-color: aliceblue;
+}
+
+.card1.left {
+  margin-right: auto;
+}
+
+.card1.right {
+  margin-left: auto;
+}
+
+iframe {
+  width: 100%;
+  height: 300px; 
+}
+@media screen and (max-width: 768px) {
+  .card1 {
+    max-width: 400px;
+    min-width: 300px;
+  }
+}
