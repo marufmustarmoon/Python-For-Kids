@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LiveCoding from './pages/LiveCoding';
 import { Link } from 'react-router-dom';
+import 'whatwg-fetch';
 import Tutorial from './pages/Tutorial';
 import Quiz from './pages/Quiz';
 
