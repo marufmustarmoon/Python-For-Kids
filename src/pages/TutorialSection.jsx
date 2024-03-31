@@ -9,7 +9,9 @@ function TutorialSection({ section }) {
         <h2 style={styles.title}>{section.title}</h2>
         <p style={styles.paragraph}>{section.content}</p>
       </div>
+      <div style={styles.editor}>
       <CodeEditor initialCode={section.initialCode} />
+      </div>
     </div>
   );
 }
@@ -38,6 +40,9 @@ const styles = {
   paragraph: {
     fontSize: '1rem',
     color: '#666',
+  },
+  editor: {
+    marginTop : '40px',
   },
 };
 
