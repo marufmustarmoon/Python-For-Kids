@@ -16,7 +16,6 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding: 20px;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -132,7 +131,7 @@ h1 {
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .container {
     flex-direction: column; 
     align-items: center; 

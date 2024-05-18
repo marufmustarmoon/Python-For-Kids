@@ -1,27 +1,22 @@
-import React from 'react';
-import HomePage from './pages/HomePage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LiveCoding from './pages/LiveCoding';
-import { Link } from 'react-router-dom';
-import 'whatwg-fetch';
-import Tutorial from './pages/Tutorial';
-import Quiz from './pages/Quiz';
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import "whatwg-fetch";
+import HomePage from "./pages/HomePage";
+import Leaderboard from "./pages/Leaderboard";
+import LiveCoding from "./pages/LiveCoding";
+import Quiz from "./pages/Quiz";
+import Tutorial from "./pages/Tutorial";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-      <nav style={{ padding: '10px', marginBottom: '20px' }}>
-          <Link to="/" style={{ color: '#fff', textDecoration: 'none', fontSize: '20px' }}>Homepage</Link>
-        </nav>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/live-coding" element={<LiveCoding />} />
         <Route path="/tutorial" element={<Tutorial />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </BrowserRouter>
-    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '../App.css'; // Make sure the path is correct to include the CSS
 import { useNavigate } from 'react-router-dom'; 
 
@@ -39,6 +39,13 @@ function HomePage() {
         title="Quiz"
         description="Test your knowledge with our quizzes."
         navigateTo="/quiz" 
+
+       
+      />
+       <Card 
+        title="Leaderboard"
+        description="Check out our leaderboard."
+        navigateTo="/leaderboard" 
 
        
       />
