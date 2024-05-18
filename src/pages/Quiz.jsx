@@ -1,9 +1,9 @@
 import { push, ref, set } from "firebase/database";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { db } from "../firebase-config";
 
-const questions = [
+const initialQuestions = [
   {
     question: "What is the output of print(2 ** 3)?",
     options: ["8", "6", "9", "None of the above"],
@@ -79,12 +79,31 @@ const questions = [
 ];
 
 function Quiz() {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [userName, setUserName] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [startQuiz, setStartQuiz] = useState(false);
+
+  useEffect(() => {
+    // Shuffle the questions when the component mounts
+    const shuffledQuestions = shuffleArray(initialQuestions);
+    setQuestions(shuffledQuestions);
+  }, []);
+
+  const shuffleArray = (array) => {
+    let shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray;
+  };
 
   const handleCardClick = () => {
     setShowForm(true);
@@ -100,8 +119,10 @@ function Quiz() {
   };
 
   const handleAnswerOptionClick = (isCorrect) => {
+    let updatedScore = score;
     if (isCorrect) {
-      setScore(score + 1);
+      updatedScore += 1;
+      setScore(updatedScore);
     }
 
     const nextQuestion = currentQuestion + 1;
@@ -109,7 +130,7 @@ function Quiz() {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
-      saveScore(userName, score);
+      saveScore(userName, updatedScore); // Use the updatedScore variable here
     }
   };
 
@@ -154,7 +175,6 @@ function Quiz() {
               onClick={handleCardClick}
             >
               Basic Python 101
-
             </div>
           </>
         ) : showForm ? (
